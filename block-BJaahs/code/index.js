@@ -13,15 +13,17 @@ let correctAnswere = 1;
 
 let h1 = document.querySelector("h1")
 h1.innerText = title
+let div = document.createElement("DIV");
+div.classList.add("font")
+let result = document.querySelector(".result");
+result.append(div)
+div.style.display = "none"
 let btn = document.querySelectorAll("div button")
 btn.forEach((op,i)=>{
   btn[i].innerText = option[i]
   op.addEventListener("click", function() {
   let index = op.getAttribute("class");
-  let div = document.createElement("DIV");
-  div.classList.add("font")
-  let result = document.querySelector(".result");
-  result.append(div)
+  div.style.display = "block"
     if(index == correctAnswere){
        div.innerText ="true";
        
@@ -65,7 +67,7 @@ let user ={
         }
     },
 
-    isAnswereCorrect(){
+    getCorrect(){
         return correctAnswerIndex
     }
 
@@ -73,43 +75,44 @@ let user ={
 
 // Create Object With Function 
 
-function createUser(title,option,correctAnswere){
+function createUser(title,option,correctAnswereIndex){
     let user ={};
     user.title = title;
     user.option = option;
-    user.correctAnswere = correctAnswere;
+    user.correctAnswereIndex = correctAnswereIndex;
 
-    user.isAnswereCorrect(index){
+    user.isAnswereCorrect = function(index){
         if(index === correctAnswerIndex){
             return true;
         } else {
             return false;
         }
-    }
+    },
 
-    user.isAnswereCorrect(){
-
+    user.getCorrect = function(){
+        return correctAnswerIndex
     }
 }
 
 // Create Object with This Keyword
 
-function createUser(title,option,correctAnswere){
+function createUser(title,option,correctAnswereIndex){
     let user ={};
     user.title = title;
     user.option = option;
-    user.correctAnswere = correctAnswere;
+    user.correctAnswereIndex = correctAnswereIndex;
 
-    user.isAnswereCorrect(index){
-        if(index === correctAnswerIndex){
+    user.isAnswereCorrect = function(index){
+        if(index === this.correctAnswerIndex){
             return true;
         } else {
             return false;
         }
-    }
+    },
 
-    user.isAnswereCorrect(){
-
+    user.getCorrect = function(){
+        return this.correctAnswerIndex
     }
 }
+
 
