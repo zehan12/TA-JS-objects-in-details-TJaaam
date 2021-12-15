@@ -115,4 +115,26 @@ function createUser(title,option,correctAnswereIndex){
     }
 }
 
+// Nature of Object with __proto__ and Object.create();
+
+let userMethod = {
+    isAnswereCorrect:function(index){
+        if(index === this.correctAnswerIndex){
+            return true;
+        } else {
+            return false;
+        }
+    },
+    getCorrect:function(){
+        return this.correctAnswerIndex
+    }
+}
+
+function createUser(){
+    let user = Object.create(userMethod);
+    user.title = title;
+    user.option = option;
+    user.correctAnswerIndex = correctAnswerIndex;
+    return user;
+}
 
