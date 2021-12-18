@@ -32,4 +32,77 @@ let secondQuestion = new Question(
   ['Tashkent', 'Amaan', 'Kingston', 'Nairobi'],
   2
 );
+
+
+// Factory pattern
+
+// function createUser( title, option, correctAnswerIndex ){
+//   let user = {};
+//   user.title = title;
+//   user.option = option;
+//   user.correctAnswerIndex = correctAnswerIndex;
+
+//   user.isAnswerCorrect = function(){
+//     if (   )
+//   }  
+// }
+
+
+// Prototypal pattern 
+
+let userMethod = {
+  isAnswerCorrect = function(index){
+    if( correctAnswerIndex === index  ){
+      return true;
+    } else {
+      return false;
+    }
+  },
+
+  getCorrectAnswer = function(){
+    return correctAnswerIndex;
+  }
+};
+
+function createQuestion( title, options,  answerIndex){
+  let question = Object.create(userMethods);
+  question.title = title;
+  question.options = options;
+  question.answerIndex = answerIndex;
+  return question
+}
+
+// Pseudoclassical pattern 
+
+function createQuestion( title, options, answerIndex ){
+  this.title = title;
+  this.options = options;
+  this.answerIndex = answerIndex;
+}
+
+CreateQuestion.prototype = {
+    isAnswerCorrect:function(index){
+      return correctAnswerIndex === index
+    },
+    getCorrectAnswer:function(){
+      return correctAnswerIndex;
+    }
+}
+
+// class Pattern
+
+class Quiz{
+  constructor ( question, options, answerIndex ){
+    this.question = question;
+    this.options =  options;
+    this.answerIndex = answerIndex;
+  }
+
+  isAnswerCorrect(){
+    return correctAnswerIndex === index;
+  }
+  getCorrectAnswer:function(){
+    return correctAnswerIndex;
+  }
+}
 ```
