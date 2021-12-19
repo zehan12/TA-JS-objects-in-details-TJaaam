@@ -152,11 +152,20 @@ function userFactory(name, score) {
   return user;
 }
 
-var adminFunctionStore = /* Put code here */ 
+var adminFunctionStore = {
+    sayType: function(){
+      console.log("I am Admin")
+    },
+    sharePublicMessage: function(){
+      console.log("Welcome users!")
+    }
+} /* Put code here */ 
 
 function adminFactory(name, score) {
   // Put code here
-
+  let user = Object.create(adminFunctionStore);
+  this.name = name;
+  this.score = score;
 }
 
 /* Put code here for a method called sharePublicMessage*/
