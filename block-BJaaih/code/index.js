@@ -8,9 +8,7 @@
 // Test the myMap function you created above
 
 let numbers = [1, 5, 6, 8, 9];
-let words = 'quick brown fox jumped over a lazy dog'.split(
-  ' '
-);
+let words = 'quick brown fox jumped over a lazy dog'.split(' ');
 let doubleNum = numbers.myMap(function (num) {
   return num * 2 - 1;
 });
@@ -22,6 +20,14 @@ let capitalWords = words
   .join(' ');
 console.log(doubleNum); // it should be [1, 9, 11, 15, 17]
 console.log(capitalWords); // it should be 'Quick Brown Fox Jumped Over A Lazy Dog'
+
+function myMap(array,callback){
+  let arr = [];
+  for(let i = 0 ; i < array.length ; i++){
+    arr.push(callback(array[i]));
+  }
+  return arr;
+}
 
 /*
 2. Add a method named `myFilter` to Array.prototype. myFilter should behave similar to Array.filter.
@@ -41,6 +47,8 @@ let filteredWords = words
   .join(' ');
 console.log(even); // it should be [6, 8]
 console.log(filteredWords); // it should be 'quick brown jumped over lazy';
+
+
 
 /*
 3. Add a method named `shuffle` to Array.prototype. Using the method shuffle will return a
@@ -64,6 +72,17 @@ Unique means no element should come multiple times.
 */
 
 // You code goes here
+function unique(array){
+  let obj = {} , newArr = [];
+  for (let i = 0 ; i < array.length ; i++){
+    obj[array[i]] = array[i];
+ }
+  for (let a in obj){
+    newArr.push(obj[a]);
+ }
+ return newArr;
+}
+
 
 // Test to check the shuffle method (It will return different output every time you call)
 let num = [1, 2, 3, 4, 2, 3, 6, 7, 7];
@@ -90,6 +109,19 @@ chunk will be the remaining elements. `length` should default to 1.
 */
 
 // You code goes here
+
+function chunk (arr, len) {
+
+  var chunks = [],
+      i = 0,
+      n = arr.length;
+
+  while (i < n) {
+    chunks.push(arr.slice(i, i += len));
+  }
+
+  return chunks;
+}
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(num.chunk(2)); // [[1, 2], [3, 4], [2, 3], [6, 7], [7]]
