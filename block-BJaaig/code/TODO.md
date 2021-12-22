@@ -29,7 +29,7 @@ function MainUser() {
 
 let userSayHello = user.sayHello;
 
-console.log(user.sayHello()); // output / error
+console.log(user.sayHello()); // output / error  
 console.log(user2.sayHello()); // output / error
 console.log(user.sayHello.call(user2)); // output / error
 console.log(user.sayHello.call(user2, 'Hey')); // output / error
